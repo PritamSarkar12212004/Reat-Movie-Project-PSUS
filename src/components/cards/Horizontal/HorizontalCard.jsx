@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CatagorySlection from "../categorySeletcion/CatagorySlection";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 function HorizontalCard({ data, setcate }) {
   const cateProps = ["movie", "all", "tv"];

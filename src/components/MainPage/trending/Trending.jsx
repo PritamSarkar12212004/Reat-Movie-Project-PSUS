@@ -4,6 +4,9 @@ import SearchEngine from "../../searchEngine/SearchEngine";
 import CatagorySlection from "../../cards/categorySeletcion/CatagorySlection";
 import axios from "../../../utils/axiosSetup/axios";
 import VorizontalCard from "../../cards/VorticalCards/VorizontalCard";
+import MainScreenLoading from "../../loading/MainScreenLoading";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 function Trending() {
   const [cate, setcate] = useState("movie");
   const [duration, setduration] = useState("day");
@@ -19,7 +22,7 @@ function Trending() {
     dataApi();
   }, [cate, duration]);
   return (
-    <div className="bg-[#0A0A0A] w-full f-screen overflow-y-auto  py-5 px-4 ">
+    <div className="bg-[rgb(10,10,10)] w-full f-screen overflow-y-auto  py-5 px-4 ">
       <nav className="flex  items-center justify-between">
         <div className="flex items-center gap-2">
           <span className=" inline-block text-2xl">
@@ -41,7 +44,18 @@ function Trending() {
           <CatagorySlection cateProps={["day", "week"]} setcate={setduration} />
         </div>
       </nav>
-      <VorizontalCard trendingdata={trendingdata} />
+      {trendingdata.length ? (
+        <InfiniteScroll
+          dataLength={trendingdata.length}
+          next={dataApi}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}
+        >
+          <VorizontalCard trendingdata={trendingdata} />
+        </InfiniteScroll>
+      ) : (
+        <MainScreenLoading />
+      )}
     </div>
   );
 }
