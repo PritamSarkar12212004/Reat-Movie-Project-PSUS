@@ -3,6 +3,8 @@ import SideNav from "../sideNav/SideNav";
 import MainContent from "../mainContent/MainContent";
 import axios from "../../utils/axiosSetup/axios";
 import MainScreenLoading from "../loading/MainScreenLoading";
+import { Analytics } from "@vercel/analytics/react"
+
 function Home() {
   // this for the Horizontal Card Data
   const [data, setData] = useState([]);
@@ -37,6 +39,7 @@ function Home() {
         <div className="w-full h-full flex">
           <SideNav />
           <MainContent data={data} setcate={setcate} headerData={headerData} />
+          <Analytics/>
         </div>
       ) : (
         <MainScreenLoading />
