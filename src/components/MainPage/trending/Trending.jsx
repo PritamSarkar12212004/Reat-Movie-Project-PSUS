@@ -20,7 +20,7 @@ function Trending() {
   };
   useEffect(() => {
     dataApi();
-  }, [cate, duration]);
+  }, [cate, duration],[]);
   return (
     <div className="bg-[rgb(10,10,10)] w-full f-screen overflow-y-auto  py-5 px-4 ">
       <nav className="flex  items-center justify-between">
