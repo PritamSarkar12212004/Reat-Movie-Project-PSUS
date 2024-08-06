@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from "react";
 import CatagorySlection from "../categorySeletcion/CatagorySlection";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function HorizontalCard({ data, setcate }) {
+  const cateProps = ["movie", "all", "tv"];
   return (
     <div className="w-full px-3 py-4">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold text-zinc-700">Trending</h1>
-        <CatagorySlection setcate={setcate} />
+        <CatagorySlection
+          setcate={setcate}
+          opatins={["Trending"]}
+          cateProps={cateProps}
+        />
       </div>
-      <div className="w-full h-[50vh] mt-6 overflow-x-auto whitespace-nowrap  overflow-y-hidden">
+      <div
+        className="w-full h-[50vh] mt-6 overflow-x-auto scroll-0 whitespace-nowrap  overflow-y-hidden"
+        style={{ scrollbarWidth: "none" }}
+      >
         {data.map((item, index) => (
           <div
             className="inline-block text-left w-[15vw] h-full mr-4 rounded-lg overflow-hidden shadow-lg bg-zinc-900 text-wrap relative"
