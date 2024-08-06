@@ -1,21 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "../../../utils/axiosSetup/axios";
 
-function header() {
-  const [headerData, setHeaderData] = useState([]);
-  const headApi = () => {
-    axios
-      .get("/trending/all/day")
-      .then((res) =>
-        setHeaderData(
-          res.data.results[(Math.random() * res.data.results.length).toFixed()]
-        )
-      )
-      .catch((err) => console.log(err));
-  };
-  useEffect(() => {
-    headApi();
-  }, []);
+function header({headerData}) {
   return (
     <>
       {headerData ? (

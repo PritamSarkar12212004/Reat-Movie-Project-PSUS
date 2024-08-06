@@ -1,22 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CatagorySlection from "../categorySeletcion/CatagorySlection";
-import axios from "../../../utils/axiosSetup/axios";
 
-function HorizontalCard() {
-  const [data, setData] = useState([]);
-  const [cate, setcate] = useState("movie");
-
-  const dataApi = () => {
-    axios
-      .get(`/trending/${cate}/day`)
-      .then((res) => setData(res.data.results))
-      .catch((err) => console.log(err));
-  };
-  console.log(data);
-  useEffect(() => {
-    dataApi();
-  }, [cate]);
-
+function HorizontalCard({ data, setcate }) {
   return (
     <div className="w-full px-3 py-4">
       <div className="flex justify-between items-center mb-4">

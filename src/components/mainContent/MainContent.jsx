@@ -3,12 +3,12 @@ import SearchEngine from "../searchEngine/SearchEngine";
 import Header from "./header/Header";
 import HorizontalCard from "../cards/Horizontal/HorizontalCard";
 
-function MainContent() {
+function MainContent({ data, setcate, headerData }) {
   return (
     <div className="w-[85%] overflow-y-auto">
       <SearchEngine />
-      <Header />
-      <HorizontalCard />
+      <Header headerData={headerData} />
+      <HorizontalCard data={data} setcate={setcate} />
     </div>
   );
 }
