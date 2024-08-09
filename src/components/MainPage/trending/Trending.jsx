@@ -18,9 +18,13 @@ function Trending() {
       .then((res) => settrendingdata(res.data.results))
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
-    dataApi();
-  }, [cate, duration],[]);
+  useEffect(
+    () => {
+      dataApi();
+    },
+    [cate, duration],
+    []
+  );
   return (
     <div className="bg-[rgb(10,10,10)] w-full f-screen overflow-y-auto  py-5 px-4 ">
       <nav className="flex  items-center justify-between">
@@ -51,7 +55,7 @@ function Trending() {
           hasMore={true}
           loader={<h4>Loading...</h4>}
         >
-          <VorizontalCard trendingdata={trendingdata} />
+          <VorizontalCard data={trendingdata} />
         </InfiniteScroll>
       ) : (
         <MainScreenLoading />
